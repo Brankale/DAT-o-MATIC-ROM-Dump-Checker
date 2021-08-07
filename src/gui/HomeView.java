@@ -49,6 +49,7 @@ public class HomeView extends JFrame {
         });
 
         setContentPane(home);
+        setTitle("ROMs CRC Check");
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
