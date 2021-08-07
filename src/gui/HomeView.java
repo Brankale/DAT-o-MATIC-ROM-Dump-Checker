@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 
 public class HomeView extends JFrame {
@@ -27,6 +28,8 @@ public class HomeView extends JFrame {
         browseButton.addActionListener(e -> {
             JFileChooser chooser = new JFileChooser();
             chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT FILES", "dat");
+            chooser.setFileFilter(filter);
             chooser.setAcceptAllFileFilterUsed(false);
 
             int returnVal = chooser.showOpenDialog(null);
