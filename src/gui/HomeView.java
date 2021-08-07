@@ -36,11 +36,16 @@ public class HomeView extends JFrame {
         });
 
         checkCRCsButton.addActionListener(e -> {
-            CrcCheckView view = new CrcCheckView();
-            File romsDir = new File(textField1.getText());
-            File datFile = new File(textField2.getText());
-            SwingWorkerTest test = new SwingWorkerTest(romsDir, datFile, view);
-            test.execute();
+            if (canDoCrcCheck()) {
+                CrcCheckView view = new CrcCheckView();
+                File romsDir = new File(textField1.getText());
+                File datFile = new File(textField2.getText());
+                SwingWorkerTest test = new SwingWorkerTest(romsDir, datFile, view);
+                test.execute();
+            } else {
+                String message = "Select both ROM folder and DAT file";
+                JOptionPane.showMessageDialog(this, message);
+            }
         });
 
         setContentPane(home);
@@ -49,6 +54,10 @@ public class HomeView extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+    }
+
+    boolean canDoCrcCheck() {
+        return !textField1.getText().isEmpty() & !textField2.getText().isEmpty();
     }
 
 }
