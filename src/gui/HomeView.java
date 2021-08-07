@@ -40,11 +40,9 @@ public class HomeView extends JFrame {
 
         checkCrcBtn.addActionListener(e -> {
             if (canDoCrcCheck()) {
-                CrcCheckView view = new CrcCheckView();
                 File romsDir = new File(romFolder.getText());
                 File datFile = new File(this.datFile.getText());
-                SwingWorkerTest test = new SwingWorkerTest(romsDir, datFile, view);
-                test.execute();
+                new CrcCheckView(romsDir, datFile);
             } else {
                 String message = "Select both ROM folder and DAT file";
                 JOptionPane.showMessageDialog(this, message);
