@@ -5,27 +5,27 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 
 public class HomeView extends JFrame {
-    private JTextField textField1;
-    private JButton button1;
-    private JButton browseButton;
-    private JTextField textField2;
-    private JButton checkCRCsButton;
+    private JTextField romFolder;
+    private JButton romFolderBtn;
+    private JButton datFileBtn;
+    private JTextField datFile;
+    private JButton checkCrcBtn;
     private JPanel home;
-    private JCheckBox fixROMsNamesCheckBox;
+    private JCheckBox fixRomName;
 
     public HomeView() {
-        button1.addActionListener(e -> {
+        romFolderBtn.addActionListener(e -> {
             JFileChooser chooser = new JFileChooser();
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             chooser.setAcceptAllFileFilterUsed(false);
 
             int returnVal = chooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                textField1.setText(chooser.getSelectedFile().getAbsolutePath());
+                romFolder.setText(chooser.getSelectedFile().getAbsolutePath());
             }
         });
 
-        browseButton.addActionListener(e -> {
+        datFileBtn.addActionListener(e -> {
             JFileChooser chooser = new JFileChooser();
             chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
             FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT FILES", "dat");
@@ -34,15 +34,15 @@ public class HomeView extends JFrame {
 
             int returnVal = chooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                textField2.setText(chooser.getSelectedFile().getAbsolutePath());
+                datFile.setText(chooser.getSelectedFile().getAbsolutePath());
             }
         });
 
-        checkCRCsButton.addActionListener(e -> {
+        checkCrcBtn.addActionListener(e -> {
             if (canDoCrcCheck()) {
                 CrcCheckView view = new CrcCheckView();
-                File romsDir = new File(textField1.getText());
-                File datFile = new File(textField2.getText());
+                File romsDir = new File(romFolder.getText());
+                File datFile = new File(this.datFile.getText());
                 SwingWorkerTest test = new SwingWorkerTest(romsDir, datFile, view);
                 test.execute();
             } else {
@@ -61,7 +61,7 @@ public class HomeView extends JFrame {
     }
 
     boolean canDoCrcCheck() {
-        return !textField1.getText().isEmpty() & !textField2.getText().isEmpty();
+        return !romFolder.getText().isEmpty() & !datFile.getText().isEmpty();
     }
 
 }

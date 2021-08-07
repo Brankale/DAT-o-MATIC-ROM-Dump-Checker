@@ -6,8 +6,8 @@ public class CrcCheckView extends JFrame {
 
     private JPanel panel1;
     public JTextArea textArea1;
-    public JProgressBar progressBar1;
-    public JButton stopButton;
+    public JProgressBar progressBar;
+    public JButton stopBtn;
 
     public CrcCheckView() {
         setContentPane(panel1);

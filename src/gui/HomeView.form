@@ -16,7 +16,7 @@
           <text value="Select ROMs folder"/>
         </properties>
       </component>
-      <component id="765b3" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="765b3" class="javax.swing.JTextField" binding="romFolder">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="300" height="-1"/>
@@ -35,7 +35,7 @@
           <text value="Select DAT file"/>
         </properties>
       </component>
-      <component id="367ea" class="javax.swing.JButton" binding="button1" default-binding="true">
+      <component id="367ea" class="javax.swing.JButton" binding="romFolderBtn">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -43,7 +43,7 @@
           <text value="Browse"/>
         </properties>
       </component>
-      <component id="da66c" class="javax.swing.JButton" binding="browseButton" default-binding="true">
+      <component id="da66c" class="javax.swing.JButton" binding="datFileBtn">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -51,7 +51,7 @@
           <text value="Browse"/>
         </properties>
       </component>
-      <component id="e7792" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="e7792" class="javax.swing.JTextField" binding="datFile">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="300" height="-1"/>
@@ -62,7 +62,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="7a2ec" class="javax.swing.JButton" binding="checkCRCsButton" default-binding="true">
+      <component id="7a2ec" class="javax.swing.JButton" binding="checkCrcBtn">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -77,11 +77,12 @@
           </grid>
         </constraints>
       </vspacer>
-      <component id="6cb4b" class="javax.swing.JCheckBox" binding="fixROMsNamesCheckBox" default-binding="true">
+      <component id="6cb4b" class="javax.swing.JCheckBox" binding="fixRomName">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <enabled value="false"/>
           <text value="Fix ROMs names"/>
           <toolTipText value="Use ROM name in DAT file"/>
         </properties>
