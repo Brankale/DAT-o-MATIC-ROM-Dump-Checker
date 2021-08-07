@@ -15,13 +15,24 @@ import java.util.TreeMap;
 
 public class NdsDat {
 
-    private TreeMap<Long, NdsGame> ndsGames;
+    private final TreeMap<Long, NdsGame> ndsGames;
 
     public NdsDat(File dat) throws IOException, SAXException, ParserConfigurationException {
         ndsGames = new TreeMap<>();
 
-        DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Document doc = db.parse(dat);
+        Document doc;
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        try {
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            doc = db.parse(dat);
+        } catch (Exception e) {
+            System.out.println("Skip XML validation");
+            dbf.setValidating(false);
+            dbf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            doc = db.parse(dat);
+        }
 
         NodeList games = doc.getElementsByTagName("game");
 
