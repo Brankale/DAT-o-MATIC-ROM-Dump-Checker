@@ -41,7 +41,16 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
 
             if (roms != null) {
                 for (File rom : roms) {
-                    // TODO: skip directories
+                    if (rom.isDirectory()) {
+                        publish("skip directory\t : \\" + rom.getName() + "\n");
+                        continue;
+                    }
+
+                    if (rom.isFile() && !rom.getName().endsWith(".nds")) {
+                        publish("skip file\t : " + rom.getName() + "\n");
+                        continue;
+                    }
+
                     long crc32 = getCrc32(rom);
                     if (ndsDat.contains(crc32)) {
                         String newName = ndsDat.getNdsGameByCrc32(crc32).getRomInfo().getName();
