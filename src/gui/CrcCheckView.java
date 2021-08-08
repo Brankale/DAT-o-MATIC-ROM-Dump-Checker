@@ -14,14 +14,14 @@ public class CrcCheckView extends JFrame {
 
     SwingWorkerTest worker;
 
-    public CrcCheckView(File romsDir, File datFile) {
+    public CrcCheckView(File romsDir, File datFile, boolean fixRomsNames) {
         setContentPane(panel1);
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
-        SwingWorkerTest worker = new SwingWorkerTest(romsDir, datFile, this);
+        SwingWorkerTest worker = new SwingWorkerTest(romsDir, datFile, fixRomsNames, this);
         worker.execute();
     }
 

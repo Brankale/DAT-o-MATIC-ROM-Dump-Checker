@@ -42,7 +42,7 @@ public class HomeView extends JFrame {
             if (canDoCrcCheck()) {
                 File romsDir = new File(romFolder.getText());
                 File datFile = new File(this.datFile.getText());
-                new CrcCheckView(romsDir, datFile);
+                CrcCheckView crcCheckView = new CrcCheckView(romsDir, datFile, fixRomName.isSelected());
             } else {
                 String message = "Select both ROM folder and DAT file";
                 JOptionPane.showMessageDialog(this, message);

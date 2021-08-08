@@ -13,6 +13,7 @@ public class Utils {
         while ((cnt = stream.read()) != -1) {
             crc32.update(cnt);
         }
+        stream.close();
         return crc32.getValue();
     }
 
