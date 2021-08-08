@@ -13,14 +13,14 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.zip.CRC32;
 
-public class SwingWorkerTest extends SwingWorker<Void, String> {
+public class ValidateCRCs extends SwingWorker<Void, String> {
 
     private final File romsDir;
     private final File dat;
     private final CrcCheckView view;
     private final Parameters params;
 
-    public SwingWorkerTest(File romsDir, File dat, Parameters params, CrcCheckView view) {
+    public ValidateCRCs(File romsDir, File dat, Parameters params, CrcCheckView view) {
         this.romsDir = romsDir;
         this.dat = dat;
         this.view = view;

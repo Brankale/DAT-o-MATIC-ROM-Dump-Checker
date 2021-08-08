@@ -5,7 +5,7 @@ import java.util.Objects;
 public class RomInfo {
 
     private String name;
-    private int size;
+    private long size;
     private long crc32;
     private String md5;
     private String sha1;
@@ -19,7 +19,7 @@ public class RomInfo {
         this.name = name;
     }
 
-    public int getSize() {
+    public long getSize() {
         return size;
     }
 
@@ -28,7 +28,7 @@ public class RomInfo {
     }
 
     public void setSize(String size) {
-        this.size = Integer.decode(size);
+        this.size = Long.decode(size);
     }
 
     public long getCrc32() {

@@ -12,7 +12,7 @@ public class CrcCheckView extends JFrame {
     public JProgressBar progressBar;
     public JButton stopBtn;
 
-    SwingWorkerTest worker;
+    ValidateCRCs worker;
 
     public CrcCheckView(File romsDir, File datFile, Parameters params) {
         setContentPane(panel1);
@@ -21,7 +21,7 @@ public class CrcCheckView extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
-        SwingWorkerTest worker = new SwingWorkerTest(romsDir, datFile, params, this);
+        ValidateCRCs worker = new ValidateCRCs(romsDir, datFile, params, this);
         worker.execute();
 
         stopBtn.addActionListener(e -> worker.cancel(true));
