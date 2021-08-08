@@ -23,6 +23,8 @@ public class CrcCheckView extends JFrame {
 
         SwingWorkerTest worker = new SwingWorkerTest(romsDir, datFile, fixRomsNames, this);
         worker.execute();
+
+        stopBtn.addActionListener(e -> worker.cancel(true));
     }
 
 }
