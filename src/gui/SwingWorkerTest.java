@@ -48,12 +48,12 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
                     }
 
                     if (rom.isDirectory()) {
-                        publish("skip directory\t : \\" + rom.getName() + "\n");
+                        publish("skip directory\t\\" + rom.getName() + "\n");
                         continue;
                     }
 
                     if (rom.isFile() && !rom.getName().endsWith(".nds")) {
-                        publish("skip file\t : " + rom.getName() + "\n");
+                        publish("skip file\t" + rom.getName() + "\n");
                         continue;
                     }
 
@@ -65,11 +65,11 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
                             renamed = fixRomName(rom, newName);
                         }
                         if (renamed)
-                            publish("[OK]\t : " + newName + "\n");
+                            publish("[OK]\t" + newName + "\n");
                         else
-                            publish("[OK]\t : " + rom.getName() + "\n");
+                            publish("[OK]\t" + rom.getName() + "\n");
                     } else {
-                        publish("[bad CRC]\t : " + rom.getName() + "\n");
+                        publish("[bad CRC]\t" + rom.getName() + "\n");
                     }
                 }
             }
