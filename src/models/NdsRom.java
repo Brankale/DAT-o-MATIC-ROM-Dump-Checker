@@ -2,14 +2,20 @@ package models;
 
 import java.util.Objects;
 
-public class NdsGame {
+public class NdsRom implements Rom {
 
     private String name;
     private String description;
     private RomInfo romInfo;
 
+    @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public long getCrc() {
+        return romInfo.getCrc32();
     }
 
     public void setName(String name) {
@@ -36,8 +42,8 @@ public class NdsGame {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NdsGame ndsGame = (NdsGame) o;
-        return romInfo.equals(ndsGame.romInfo);
+        NdsRom ndsRom = (NdsRom) o;
+        return romInfo.equals(ndsRom.romInfo);
     }
 
     @Override

@@ -11,11 +11,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeMap;
 
-public class NdsDat {
+public class NdsDat implements DatFile {
 
-    private final TreeMap<Long, NdsGame> ndsGames;
+    private final TreeMap<Long, NdsRom> ndsGames;
 
     public NdsDat(File dat) throws IOException, SAXException, ParserConfigurationException {
         ndsGames = new TreeMap<>();
@@ -37,31 +39,40 @@ public class NdsDat {
         NodeList games = doc.getElementsByTagName("game");
 
         for (int i = 0; i < games.getLength(); ++i) {
-            NdsGame ndsGame = parseNdsGame(games.item(i));
-            ndsGames.put(ndsGame.getRomInfo().getCrc32(), ndsGame);
+            NdsRom ndsRom = parseNdsGame(games.item(i));
+            ndsGames.put(ndsRom.getRomInfo().getCrc32(), ndsRom);
         }
     }
 
-    public boolean contains(long crc32) {
-        return ndsGames.containsKey(crc32);
-    }
-
-    public NdsGame getNdsGameByCrc32(long crc32) {
-        return ndsGames.get(crc32);
-    }
-
-    private NdsGame parseNdsGame(Node node) {
-        NdsGame ndsGame = new NdsGame();
+    private NdsRom parseNdsGame(Node node) {
+        NdsRom ndsRom = new NdsRom();
 
         Element element = (Element) node;
-        ndsGame.setName(element.getAttribute("name"));
+        ndsRom.setName(element.getAttribute("name"));
 
         // TODO: init description
 
         NodeList roms = element.getElementsByTagName("rom");
-        ndsGame.setRomInfo(parseRomInfo(roms.item(0)));
+        ndsRom.setRomInfo(parseRomInfo(roms.item(0)));
 
-        return ndsGame;
+        return ndsRom;
+    }
+
+    @Override
+    public List<String> acceptedRomExtensions() {
+        ArrayList<String> extensions = new ArrayList<>();
+        extensions.add("nds");
+        return extensions;
+    }
+
+    @Override
+    public boolean validateCrc(long crc) {
+        return ndsGames.containsKey(crc);
+    }
+
+    @Override
+    public Rom getRomByCrc(long crc) {
+        return ndsGames.get(crc);
     }
 
     private RomInfo parseRomInfo(Node node) {

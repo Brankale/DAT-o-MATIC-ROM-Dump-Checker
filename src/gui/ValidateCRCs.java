@@ -1,5 +1,6 @@
 package gui;
 
+import models.DatFile;
 import models.NdsDat;
 import models.Parameters;
 
@@ -37,7 +38,7 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
     protected Void doInBackground() {
 
         try {
-            NdsDat ndsDat = new NdsDat(dat);
+            DatFile ndsDat = new NdsDat(dat);
             File[] roms = romsDir.listFiles();
 
             if (roms != null) {
@@ -59,8 +60,9 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
                     }
 
                     long crc32 = getCrc32(rom);
-                    if (ndsDat.contains(crc32)) {
-                        String newName = ndsDat.getNdsGameByCrc32(crc32).getRomInfo().getName();
+                    if (ndsDat.validateCrc(crc32)) {
+                        String newName = ndsDat.getRomByCrc(crc32).getName();
+
                         boolean renamed = false;
                         if (params.fixRomsNames()) {
                             renamed = fixRomName(rom, newName);
