@@ -42,8 +42,10 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
             if (roms != null) {
                 for (File rom : roms) {
 
-                    if (isCancelled())
+                    if (isCancelled()) {
+                        publish("Interrupted!");
                         return null;
+                    }
 
                     if (rom.isDirectory()) {
                         publish("skip directory\t : \\" + rom.getName() + "\n");
@@ -90,12 +92,8 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
     @Override
     protected void done() {
         view.stopBtn.setEnabled(false);
-        if (isCancelled()) {
-            view.textArea1.append("Interrupted!\n");
-        } else {
+        if (!isCancelled())
             view.textArea1.append("Completed!\n");
-        }
-
     }
 
     private static long getCrc32(File file) throws IOException {
