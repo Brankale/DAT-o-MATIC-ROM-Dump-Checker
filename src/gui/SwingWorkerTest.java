@@ -1,6 +1,7 @@
 package gui;
 
 import models.NdsDat;
+import models.Parameters;
 
 import javax.swing.*;
 import java.io.BufferedInputStream;
@@ -17,13 +18,13 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
     private final File romsDir;
     private final File dat;
     private final CrcCheckView view;
-    private final boolean fixRomsNames;
+    private final Parameters params;
 
-    public SwingWorkerTest(File romsDir, File dat, boolean fixRomsNames, CrcCheckView view) {
+    public SwingWorkerTest(File romsDir, File dat, Parameters params, CrcCheckView view) {
         this.romsDir = romsDir;
         this.dat = dat;
         this.view = view;
-        this.fixRomsNames = fixRomsNames;
+        this.params = params;
 
         File[] roms = romsDir.listFiles();
         if (roms != null)
@@ -61,7 +62,7 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
                     if (ndsDat.contains(crc32)) {
                         String newName = ndsDat.getNdsGameByCrc32(crc32).getRomInfo().getName();
                         boolean renamed = false;
-                        if (fixRomsNames) {
+                        if (params.fixRomsNames()) {
                             renamed = fixRomName(rom, newName);
                         }
                         if (renamed)
@@ -108,6 +109,12 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
     }
 
     private boolean fixRomName(File rom, String newName) {
+
+        if (params.trimRegion()) {
+            newName = newName.substring(0, newName.indexOf('(')).trim()
+                    + newName.substring(newName.lastIndexOf('.'));
+        }
+
         if (!rom.getName().equals(newName)) {
             Path source = rom.toPath();
             try {
@@ -117,6 +124,7 @@ public class SwingWorkerTest extends SwingWorker<Void, String> {
                 e.printStackTrace();
             }
         }
+
         return false;
     }
 

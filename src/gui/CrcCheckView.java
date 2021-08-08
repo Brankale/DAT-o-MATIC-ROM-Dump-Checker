@@ -1,8 +1,8 @@
 package gui;
 
+import models.Parameters;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 public class CrcCheckView extends JFrame {
@@ -14,14 +14,14 @@ public class CrcCheckView extends JFrame {
 
     SwingWorkerTest worker;
 
-    public CrcCheckView(File romsDir, File datFile, boolean fixRomsNames) {
+    public CrcCheckView(File romsDir, File datFile, Parameters params) {
         setContentPane(panel1);
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
-        SwingWorkerTest worker = new SwingWorkerTest(romsDir, datFile, fixRomsNames, this);
+        SwingWorkerTest worker = new SwingWorkerTest(romsDir, datFile, params, this);
         worker.execute();
 
         stopBtn.addActionListener(e -> worker.cancel(true));

@@ -1,5 +1,7 @@
 package gui;
 
+import models.Parameters;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -19,6 +21,7 @@ public class HomeView extends JFrame {
     private JPanel home;
     private JCheckBox fixRomName;
     private JLabel downloadLink;
+    private JCheckBox trimRegionAndLanguagesCheckBox;
 
     public HomeView() {
 
@@ -72,7 +75,12 @@ public class HomeView extends JFrame {
             if (canDoCrcCheck()) {
                 File romsDir = new File(romFolder.getText());
                 File datFile = new File(this.datFile.getText());
-                new CrcCheckView(romsDir, datFile, fixRomName.isSelected());
+
+                Parameters params = new Parameters();
+                params.setFixRomsNames(fixRomName.isSelected());
+                params.setTrimRegion(trimRegionAndLanguagesCheckBox.isSelected());
+
+                new CrcCheckView(romsDir, datFile, params);
             } else {
                 String message = "Select both ROM folder and DAT file";
                 JOptionPane.showMessageDialog(this, message);
@@ -86,6 +94,9 @@ public class HomeView extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+        fixRomName.addActionListener(e -> {
+            trimRegionAndLanguagesCheckBox.setEnabled(!trimRegionAndLanguagesCheckBox.isEnabled());
+        });
     }
 
     boolean canDoCrcCheck() {
