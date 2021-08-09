@@ -1,4 +1,4 @@
-package models;
+package gui.models;
 
 public class Parameters {
 

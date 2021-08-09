@@ -1,6 +1,6 @@
 package gui;
 
-import models.Parameters;
+import gui.models.Parameters;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
