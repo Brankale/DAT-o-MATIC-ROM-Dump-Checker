@@ -1,6 +1,7 @@
 package gui;
 
 import gui.models.Parameters;
+import models.DatEntry;
 import models.DatFile;
 
 import javax.swing.*;
@@ -48,19 +49,20 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
                         return null;
                     }
 
-                    if (rom.isDirectory()) {
-                        publish("skip directory\t\\" + rom.getName() + "\n");
-                        continue;
-                    }
-
-                    if (rom.isFile() && !rom.getName().endsWith(".nds")) {
-                        publish("skip file\t" + rom.getName() + "\n");
+                    if (!isValidFile(rom, datFile.getAcceptedExtensions())) {
+                        publish("skip invalid file\t" + rom.getPath() + "\n");
                         continue;
                     }
 
                     long crc32 = getCrc32(rom);
                     if (datFile.validateCrc(crc32)) {
-                        String newName = datFile.getDatEntryByCrc(crc32).getName();
+                        DatEntry datEntry = datFile.getDatEntryByCrc(crc32);
+                        // this thing is necessary to have a readable name with the extension
+                        // because romName can be a long string of numbers instead of game name
+                        // but it has the rom extension
+                        String newName = datEntry.getName() ;
+                        String extension = getFileExtension(datEntry.getRom().getName());
+                        newName = newName + "." + extension;
 
                         boolean renamed = false;
                         if (params.fixRomsNames()) {
@@ -128,5 +130,22 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
 
         return false;
     }
+
+    private boolean isValidFile(File rom, List<String> acceptedExtensions) {
+        if (!rom.isDirectory()) {
+            String extension = getFileExtension(rom.getName());
+            return acceptedExtensions.contains(extension);
+        }
+        return false;
+    }
+
+    private String getFileExtension(String fileName) {
+        int dotPos = fileName.lastIndexOf('.');
+        if (dotPos != -1) {
+            return fileName.substring(dotPos + 1);
+        }
+        return null;
+    }
+
 
 }
