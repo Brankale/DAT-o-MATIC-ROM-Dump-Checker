@@ -5,6 +5,8 @@ import gui.models.Parameters;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -32,6 +34,7 @@ public class HomeView extends JFrame {
     private JLabel noIntroNameConventionLabel;
 
     private JButton checkCrcButton;
+    private JButton infoButton;
 
     public HomeView() {
 
@@ -155,6 +158,10 @@ public class HomeView extends JFrame {
                     }
                 }
             }
+        });
+
+        infoButton.addActionListener(e -> {
+            new Info();
         });
 
         setContentPane(panel);

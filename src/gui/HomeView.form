@@ -50,7 +50,7 @@
       </component>
       <component id="7a2ec" class="javax.swing.JButton" binding="checkCrcButton">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Check CRCs"/>
@@ -160,6 +160,14 @@
         </constraints>
         <properties>
           <text value="Browse"/>
+        </properties>
+      </component>
+      <component id="d0c4b" class="javax.swing.JButton" binding="infoButton" default-binding="true">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Info"/>
         </properties>
       </component>
     </children>
