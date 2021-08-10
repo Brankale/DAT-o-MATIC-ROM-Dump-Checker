@@ -147,12 +147,14 @@ public class HomeView extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                     JFileChooser chooser = new JFileChooser();
-                    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                    FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT FILES", "dat");
+                    chooser.setFileFilter(filter);
                     chooser.setAcceptAllFileFilterUsed(false);
 
                     int returnVal = chooser.showOpenDialog(null);
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
-                        romFolder.setText(chooser.getSelectedFile().getAbsolutePath());
+                        datFile.setText(chooser.getSelectedFile().getAbsolutePath());
                     }
                 }
             }
