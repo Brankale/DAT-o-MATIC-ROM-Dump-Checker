@@ -14,14 +14,14 @@ public class CrcCheckView extends JFrame {
 
     ValidateCRCs worker;
 
-    public CrcCheckView(File romsDir, File datFile, Parameters params) {
+    public CrcCheckView(Parameters params) {
         setContentPane(panel1);
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
 
-        ValidateCRCs worker = new ValidateCRCs(romsDir, datFile, params, this);
+        ValidateCRCs worker = new ValidateCRCs(params, this);
         worker.execute();
 
         stopBtn.addActionListener(e -> worker.cancel(true));

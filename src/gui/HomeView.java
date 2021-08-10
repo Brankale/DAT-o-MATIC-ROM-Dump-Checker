@@ -76,11 +76,12 @@ public class HomeView extends JFrame {
                 File romsDir = new File(romFolder.getText());
                 File datFile = new File(this.datFile.getText());
 
-                Parameters params = new Parameters();
-                params.setFixRomsNames(fixRomName.isSelected());
-                params.setTrimRegion(trimRegionAndLanguagesCheckBox.isSelected());
+                Parameters params = new Parameters.Builder(romsDir, datFile)
+                        .noIntroNameConvention(fixRomName.isSelected())
+                        .trimRegion(trimRegionAndLanguagesCheckBox.isSelected())
+                        .build();
 
-                new CrcCheckView(romsDir, datFile, params);
+                new CrcCheckView(params);
             } else {
                 String message = "Select both ROM folder and DAT file";
                 JOptionPane.showMessageDialog(this, message);

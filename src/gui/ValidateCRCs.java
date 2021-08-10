@@ -16,18 +16,15 @@ import java.util.zip.CRC32;
 
 public class ValidateCRCs extends SwingWorker<Void, String> {
 
-    private final File romsDir;
-    private final File dat;
-    private final CrcCheckView view;
     private final Parameters params;
+    private final CrcCheckView view;
 
-    public ValidateCRCs(File romsDir, File dat, Parameters params, CrcCheckView view) {
-        this.romsDir = romsDir;
-        this.dat = dat;
-        this.view = view;
+    public ValidateCRCs(Parameters params, CrcCheckView view) {
         this.params = params;
+        this.view = view;
 
-        File[] roms = romsDir.listFiles();
+
+        File[] roms = params.getRomsDirectory().listFiles();
         if (roms != null)
             view.progressBar.setMaximum(roms.length);
         else
@@ -38,8 +35,8 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
     protected Void doInBackground() {
 
         try {
-            DatFile datFile = new DatFile(dat);
-            File[] roms = romsDir.listFiles();
+            DatFile datFile = new DatFile(params.getDat());
+            File[] roms = params.getRomsDirectory().listFiles();
 
             if (roms != null) {
                 for (File rom : roms) {
@@ -65,7 +62,7 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
                         newName = newName + "." + extension;
 
                         boolean renamed = false;
-                        if (params.fixRomsNames()) {
+                        if (params.noIntroNameConvention()) {
                             renamed = fixRomName(rom, newName);
                         }
                         if (renamed)
