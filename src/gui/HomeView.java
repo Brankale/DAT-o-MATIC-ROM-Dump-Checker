@@ -126,6 +126,37 @@ public class HomeView extends JFrame {
             trimRegionAndLanguagesCheckBox.setEnabled(!trimRegionAndLanguagesCheckBox.isEnabled());
         });
 
+        romFolder.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
+                    JFileChooser chooser = new JFileChooser();
+                    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                    chooser.setAcceptAllFileFilterUsed(false);
+
+                    int returnVal = chooser.showOpenDialog(null);
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        romFolder.setText(chooser.getSelectedFile().getAbsolutePath());
+                    }
+                }
+            }
+        });
+
+        datFile.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
+                    JFileChooser chooser = new JFileChooser();
+                    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                    chooser.setAcceptAllFileFilterUsed(false);
+
+                    int returnVal = chooser.showOpenDialog(null);
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        romFolder.setText(chooser.getSelectedFile().getAbsolutePath());
+                    }
+                }
+            }
+        });
     }
 
     boolean canDoCrcCheck() {
