@@ -3,7 +3,6 @@ package gui;
 import gui.models.Parameters;
 
 import javax.swing.*;
-import java.io.File;
 
 public class CrcCheckView extends JFrame {
 
@@ -11,8 +10,6 @@ public class CrcCheckView extends JFrame {
     public JTextArea textArea1;
     public JProgressBar progressBar;
     public JButton stopBtn;
-
-    ValidateCRCs worker;
 
     public CrcCheckView(Parameters params) {
         setContentPane(panel1);

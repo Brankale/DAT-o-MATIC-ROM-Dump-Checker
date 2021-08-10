@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.HomeView">
-  <grid id="27dc6" binding="home" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
       <xy x="20" y="20" width="500" height="333"/>
@@ -16,7 +16,7 @@
           <text value="Select ROMs folder"/>
         </properties>
       </component>
-      <component id="765b3" class="javax.swing.JTextField" binding="romFolder">
+      <component id="765b3" class="javax.swing.JTextField" binding="romFolderTextField">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="300" height="-1"/>
@@ -28,7 +28,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="367ea" class="javax.swing.JButton" binding="romFolderBtn">
+      <component id="367ea" class="javax.swing.JButton" binding="romFolderButton">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -36,7 +36,7 @@
           <text value="Browse"/>
         </properties>
       </component>
-      <component id="e7792" class="javax.swing.JTextField" binding="datFile">
+      <component id="e7792" class="javax.swing.JTextField" binding="datFileTextField">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="300" height="-1"/>
@@ -48,7 +48,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="7a2ec" class="javax.swing.JButton" binding="checkCrcBtn">
+      <component id="7a2ec" class="javax.swing.JButton" binding="checkCrcButton">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -71,7 +71,7 @@
         <properties/>
         <border type="none" title="Optional"/>
         <children>
-          <component id="6cb4b" class="javax.swing.JCheckBox" binding="fixRomName">
+          <component id="6cb4b" class="javax.swing.JCheckBox" binding="noIntroConventionCheckBox">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -81,7 +81,7 @@
               <toolTipText value="Rename ROMs with the No-Intro name convention"/>
             </properties>
           </component>
-          <component id="fea8b" class="javax.swing.JCheckBox" binding="trimRegionAndLanguagesCheckBox" default-binding="true">
+          <component id="fea8b" class="javax.swing.JCheckBox" binding="trimRegionCheckBox" default-binding="true">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -139,7 +139,7 @@
               <text value="Select DAT file"/>
             </properties>
           </component>
-          <component id="98208" class="javax.swing.JLabel" binding="downloadLink">
+          <component id="98208" class="javax.swing.JLabel" binding="datDownloadPageLabel">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -154,7 +154,7 @@
           </hspacer>
         </children>
       </grid>
-      <component id="da66c" class="javax.swing.JButton" binding="datFileBtn">
+      <component id="da66c" class="javax.swing.JButton" binding="datFileButton">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
