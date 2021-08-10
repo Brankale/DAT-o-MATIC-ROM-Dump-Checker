@@ -13,6 +13,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class HomeView extends JFrame {
+
+    private final String DAT_DOWNLOAD_PAGE = "https://datomatic.no-intro.org/index.php?page=download&s=64";
+    private final String NO_INTRO_NAME_CONVENTION = "https://datomatic.no-intro.org/stuff/The%20Official%20No-Intro%20Convention%20(20071030).pdf";
+
     private JTextField romFolder;
     private JButton romFolderBtn;
     private JButton datFileBtn;
@@ -22,12 +26,15 @@ public class HomeView extends JFrame {
     private JCheckBox fixRomName;
     private JLabel downloadLink;
     private JCheckBox trimRegionAndLanguagesCheckBox;
+    private JLabel noIntroNameConventionLabel;
 
     public HomeView() {
 
-        String link = "https://datomatic.no-intro.org/index.php?page=download&s=64";
-        String html = "<html>(<a href=\"" + link + "\">Download</a>)</html>";
+        String html = "<html>(<a href=\"" + DAT_DOWNLOAD_PAGE + "\">Download</a>)</html>";
         downloadLink.setText(html);
+
+        html = "<html>(<a href=\"" + NO_INTRO_NAME_CONVENTION + "\">Find out more</a>)</html>";
+        noIntroNameConventionLabel.setText(html);
 
         romFolderBtn.addActionListener(e -> {
             JFileChooser chooser = new JFileChooser();
@@ -58,7 +65,7 @@ public class HomeView extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                     try {
-                        Desktop.getDesktop().browse(new URI(link));
+                        Desktop.getDesktop().browse(new URI(DAT_DOWNLOAD_PAGE));
                     } catch (IOException | URISyntaxException ioException) {
                         ioException.printStackTrace();
                     }
@@ -68,6 +75,24 @@ public class HomeView extends JFrame {
             @Override
             public void mouseEntered(MouseEvent e) {
                 downloadLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+        });
+
+        noIntroNameConventionLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                    try {
+                        Desktop.getDesktop().browse(new URI(NO_INTRO_NAME_CONVENTION));
+                    } catch (IOException | URISyntaxException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                noIntroNameConventionLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
         });
 
@@ -98,6 +123,7 @@ public class HomeView extends JFrame {
         fixRomName.addActionListener(e -> {
             trimRegionAndLanguagesCheckBox.setEnabled(!trimRegionAndLanguagesCheckBox.isEnabled());
         });
+
     }
 
     boolean canDoCrcCheck() {
