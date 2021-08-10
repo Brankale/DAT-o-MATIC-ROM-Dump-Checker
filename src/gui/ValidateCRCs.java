@@ -47,7 +47,11 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
                     }
 
                     if (!isValidFile(rom, datFile.getAcceptedExtensions())) {
-                        publish("skip invalid file\t" + rom.getPath() + "\n");
+                        if (!params.hideWarnings()) {
+                            publish("skip invalid file\t" + rom.getPath() + "\n");
+                        } else {
+                            publish("");
+                        }
                         continue;
                     }
 

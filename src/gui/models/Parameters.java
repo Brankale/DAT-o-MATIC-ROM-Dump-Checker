@@ -8,6 +8,7 @@ public class Parameters {
     private final File dat;
     private final boolean noIntroNameConvention;
     private final boolean trimRegion;
+    private final boolean hideWarnings;
 
     public static class Builder {
 
@@ -17,6 +18,7 @@ public class Parameters {
         // optional parameters
         private boolean noIntroNameConvention = false;
         private boolean trimRegion = false;
+        private boolean hideWarnings = true;
 
         public Builder(File romsDirectory, File dat) {
             this.romsDirectory = romsDirectory;
@@ -33,6 +35,11 @@ public class Parameters {
             return this;
         }
 
+        public Builder hideWarnings(boolean val) {
+            hideWarnings = val;
+            return this;
+        }
+
         public Parameters build() {
             return new Parameters(this);
         }
@@ -44,6 +51,7 @@ public class Parameters {
         dat = builder.dat;
         noIntroNameConvention = builder.noIntroNameConvention;
         trimRegion = builder.trimRegion;
+        hideWarnings = builder.hideWarnings;
     }
 
     public File getRomsDirectory() {
@@ -62,4 +70,7 @@ public class Parameters {
         return trimRegion;
     }
 
+    public boolean hideWarnings() {
+        return hideWarnings;
+    }
 }

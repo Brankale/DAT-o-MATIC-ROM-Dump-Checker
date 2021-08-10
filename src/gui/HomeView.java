@@ -27,6 +27,7 @@ public class HomeView extends JFrame {
     private JLabel downloadLink;
     private JCheckBox trimRegionAndLanguagesCheckBox;
     private JLabel noIntroNameConventionLabel;
+    private JCheckBox hideWarningsCheckBox;
 
     public HomeView() {
 
@@ -104,6 +105,7 @@ public class HomeView extends JFrame {
                 Parameters params = new Parameters.Builder(romsDir, datFile)
                         .noIntroNameConvention(fixRomName.isSelected())
                         .trimRegion(trimRegionAndLanguagesCheckBox.isSelected())
+                        .hideWarnings(hideWarningsCheckBox.isSelected())
                         .build();
 
                 new CrcCheckView(params);
