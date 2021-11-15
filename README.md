@@ -1,4 +1,4 @@
-# NDS roms CRC check
+# Nintendo DS ROMs CRC Checker 
  Check if your NDS roms are good or bad dumps. In theory it should support also other types of roms but in practise i don't know.
  
  This program makes use of [DAT-o-MATIC](https://datomatic.no-intro.org/index.php?page=download&s=64) lists for CRCs checks.
