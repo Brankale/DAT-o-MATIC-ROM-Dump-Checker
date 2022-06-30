@@ -1,7 +1,6 @@
-package gui;
+package com.github.brankale.gui;
 
 import javax.swing.*;
-import java.io.File;
 
 public class Info extends JFrame {
 

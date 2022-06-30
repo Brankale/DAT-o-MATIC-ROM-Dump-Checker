@@ -1,6 +1,6 @@
-package gui;
+package com.github.brankale.gui;
 
-import gui.models.Parameters;
+import com.github.brankale.gui.models.Parameters;
 
 import javax.swing.*;
 

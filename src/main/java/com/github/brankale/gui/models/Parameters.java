@@ -1,4 +1,4 @@
-package gui.models;
+package com.github.brankale.gui.models;
 
 import java.io.File;
 

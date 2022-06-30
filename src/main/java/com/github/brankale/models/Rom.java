@@ -1,4 +1,4 @@
-package models;
+package com.github.brankale.models;
 
 import java.util.Objects;
 

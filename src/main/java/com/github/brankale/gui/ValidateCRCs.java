@@ -1,8 +1,8 @@
-package gui;
+package com.github.brankale.gui;
 
-import gui.models.Parameters;
-import models.DatEntry;
-import models.DatFile;
+import com.github.brankale.gui.models.Parameters;
+import com.github.brankale.models.DatEntry;
+import com.github.brankale.models.DatFile;
 
 import javax.swing.*;
 import java.io.BufferedInputStream;

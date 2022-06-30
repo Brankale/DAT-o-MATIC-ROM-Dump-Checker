@@ -1,4 +1,4 @@
-package models;
+package com.github.brankale.models;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

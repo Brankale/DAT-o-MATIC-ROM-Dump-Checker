@@ -1,5 +1,7 @@
+package com.github.brankale;
+
 import com.formdev.flatlaf.FlatLightLaf;
-import gui.HomeView;
+import com.github.brankale.gui.HomeView;
 
 public class Main {
 
