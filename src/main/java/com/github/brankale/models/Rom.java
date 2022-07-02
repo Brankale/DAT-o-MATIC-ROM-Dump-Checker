@@ -9,7 +9,7 @@ public record Rom(
         String md5,
         String sha1,
         String sha256,
-        Status status,
+        RomStatus romStatus,
         String serial
 ) {
 
@@ -37,7 +37,7 @@ public record Rom(
         private String md5;
         private String sha1;
         private String sha256;
-        private Status status;
+        private RomStatus romStatus;
         private String serial;
 
         public Builder setName(String name) {
@@ -70,8 +70,8 @@ public record Rom(
             return this;
         }
 
-        public Builder setStatus(Status status) {
-            this.status = status;
+        public Builder setStatus(RomStatus romStatus) {
+            this.romStatus = romStatus;
             return this;
         }
 
@@ -81,7 +81,7 @@ public record Rom(
         }
 
         public Rom build() {
-            return new Rom(name, size, crc, md5, sha1, sha256, status, serial);
+            return new Rom(name, size, crc, md5, sha1, sha256, romStatus, serial);
         }
     }
 

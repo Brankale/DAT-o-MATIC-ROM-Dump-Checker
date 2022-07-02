@@ -1,24 +1,24 @@
 package com.github.brankale.models;
 
-public enum Status {
+public enum RomStatus {
     NOT_VERIFIED,
     VERIFIED("verified"),
     BAD_DUMP("baddump");
 
     private final String string;
 
-    Status() {
+    RomStatus() {
         string = "";
     }
 
-    Status(String string) {
+    RomStatus(String string) {
         this.string = string;
     }
 
-    public static Status parse(String statusString) {
-        for (Status status : Status.values())
-            if (status.string.equals(statusString))
-                return status;
+    public static RomStatus parse(String statusString) {
+        for (RomStatus romStatus : RomStatus.values())
+            if (romStatus.string.equals(statusString))
+                return romStatus;
         throw new IllegalArgumentException("Illegal status: " + statusString);
     }
 }
