@@ -40,44 +40,36 @@ public record Rom(
         private RomStatus romStatus;
         private String serial;
 
-        public Builder setName(String name) {
+        public void setName(String name) {
             this.name = name;
-            return this;
         }
 
-        public Builder setSize(long size) {
+        public void setSize(long size) {
             this.size = size;
-            return this;
         }
 
-        public Builder setCrc(long crc) {
+        public void setCrc(long crc) {
             this.crc = crc;
-            return this;
         }
 
-        public Builder setMd5(String md5) {
+        public void setMd5(String md5) {
             this.md5 = md5;
-            return this;
         }
 
-        public Builder setSha1(String sha1) {
+        public void setSha1(String sha1) {
             this.sha1 = sha1;
-            return this;
         }
 
-        public Builder setSha256(String sha256) {
+        public void setSha256(String sha256) {
             this.sha256 = sha256;
-            return this;
         }
 
-        public Builder setStatus(RomStatus romStatus) {
+        public void setStatus(RomStatus romStatus) {
             this.romStatus = romStatus;
-            return this;
         }
 
-        public Builder setSerial(String serial) {
+        public void setSerial(String serial) {
             this.serial = serial;
-            return this;
         }
 
         public Rom build() {

@@ -1,8 +1,9 @@
 package com.github.brankale.gui;
 
 import com.github.brankale.gui.models.Parameters;
+import com.github.brankale.models.DatParser;
 import com.github.brankale.models.dat.DatEntry;
-import com.github.brankale.models.DatFile;
+import com.github.brankale.models.dat.DatFile;
 
 import javax.swing.*;
 import java.io.BufferedInputStream;
@@ -35,7 +36,8 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
     protected Void doInBackground() {
 
         try {
-            DatFile datFile = new DatFile(params.getDat());
+            File file = params.getDat();
+            DatFile datFile = DatParser.parse(file);
             File[] roms = params.getRomsDirectory().listFiles();
 
             if (roms != null) {
