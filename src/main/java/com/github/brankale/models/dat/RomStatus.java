@@ -1,15 +1,11 @@
 package com.github.brankale.models.dat;
 
 public enum RomStatus {
-    NOT_VERIFIED,
+    NOT_VERIFIED(""),
     VERIFIED("verified"),
     BAD_DUMP("baddump");
 
     private final String string;
-
-    RomStatus() {
-        string = "";
-    }
 
     RomStatus(String string) {
         this.string = string;

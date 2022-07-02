@@ -2,6 +2,7 @@ package com.github.brankale.models;
 
 import com.github.brankale.models.dat.DatEntry;
 import com.github.brankale.models.dat.Rom;
+import com.github.brankale.models.dat.RomStatus;
 import org.apache.commons.text.StringEscapeUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -57,10 +58,23 @@ public class DatFile {
     private Rom parseRom(Node rom) {
         String name = ((Element) rom).getAttribute("name");
         String crc = ((Element) rom).getAttribute("crc");
-        return new Rom.Builder()
-                .setName(StringEscapeUtils.unescapeXml(name))
-                .setCrc(Long.decode("0x" + crc))
-                .build();
+        String sha1 = ((Element) rom).getAttribute("sha1");
+        String sha256 = ((Element) rom).getAttribute("sha256");
+        String size = ((Element) rom).getAttribute("size");
+        String serial = ((Element) rom).getAttribute("serial");
+        String status = ((Element) rom).getAttribute("status");
+
+        Rom.Builder builder = new Rom.Builder();
+
+        builder.setName(StringEscapeUtils.unescapeXml(name));
+        builder.setSize(Long.parseLong(size));
+        builder.setCrc(Long.decode("0x" + crc));
+        if (!sha1.isEmpty()) builder.setSha1(sha1);
+        if (!sha256.isEmpty()) builder.setSha256(sha256);
+        if (!serial.isEmpty()) builder.setSerial(serial);
+        builder.setStatus(RomStatus.parse(status));
+
+        return builder.build();
     }
 
     public boolean validateCrc(long crc) {
