@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.brankale</groupId>
-    <artifactId>DAT-O-MATIC-ROMs-CRC-Checker</artifactId>
+    <artifactId>DoM-ROM-Dump-Checker</artifactId>
     <version>1.1</version>
 
     <properties>
