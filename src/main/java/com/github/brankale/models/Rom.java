@@ -2,23 +2,16 @@ package com.github.brankale.models;
 
 import java.util.Objects;
 
-public class Rom {
-
-    private final String name;
-    private final long crc;
-
-    public Rom(String name, long crc) {
-        this.name = name;
-        this.crc = crc;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public long getCrc() {
-        return crc;
-    }
+public record Rom(
+        String name,
+        long size,
+        long crc,
+        String md5,
+        String sha1,
+        String sha256,
+        Status status,
+        String serial
+) {
 
     public String getExtension() {
         return name.substring(name.lastIndexOf(".") + 1);

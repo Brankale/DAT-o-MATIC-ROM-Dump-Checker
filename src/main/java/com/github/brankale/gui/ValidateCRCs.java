@@ -62,7 +62,7 @@ public class ValidateCRCs extends SwingWorker<Void, String> {
                         // because romName can be a long string of numbers instead of game name
                         // but it has the rom extension
                         String newName = datEntry.getName() ;
-                        String extension = getFileExtension(datEntry.getRom().getName());
+                        String extension = getFileExtension(datEntry.getRom().name());
                         newName = newName + "." + extension;
 
                         boolean renamed = false;

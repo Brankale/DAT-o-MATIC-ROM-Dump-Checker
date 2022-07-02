@@ -29,7 +29,7 @@ public class DatFile {
         NodeList datEntries = doc.getElementsByTagName("game");
         for (int i = 0; i < datEntries.getLength(); ++i) {
             DatEntry datEntry = parseDatEntry(datEntries.item(i));
-            entries.put(datEntry.getRom().getCrc(), datEntry);
+            entries.put(datEntry.getRom().crc(), datEntry);
             extensions.add(datEntry.getRom().getExtension());
         }
     }
@@ -54,7 +54,7 @@ public class DatFile {
     private Rom parseRom(Node rom) {
         String name = ((Element) rom).getAttribute("name");
         String crc = ((Element) rom).getAttribute("crc");
-        return new Rom(name, Long.decode("0x" + crc));
+        return new Rom(name, 0, Long.decode("0x" + crc), null, null, null, null, null);
     }
 
     public boolean validateCrc(long crc) {
