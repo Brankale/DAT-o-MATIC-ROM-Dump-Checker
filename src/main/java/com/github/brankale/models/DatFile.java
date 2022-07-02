@@ -54,7 +54,10 @@ public class DatFile {
     private Rom parseRom(Node rom) {
         String name = ((Element) rom).getAttribute("name");
         String crc = ((Element) rom).getAttribute("crc");
-        return new Rom(name, 0, Long.decode("0x" + crc), null, null, null, null, null);
+        return new Rom.Builder()
+                .setName(name)
+                .setCrc(Long.decode("0x" + crc))
+                .build();
     }
 
     public boolean validateCrc(long crc) {
