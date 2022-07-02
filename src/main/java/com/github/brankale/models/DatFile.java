@@ -1,5 +1,6 @@
 package com.github.brankale.models;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -55,7 +56,7 @@ public class DatFile {
         String name = ((Element) rom).getAttribute("name");
         String crc = ((Element) rom).getAttribute("crc");
         return new Rom.Builder()
-                .setName(name)
+                .setName(StringEscapeUtils.unescapeXml(name))
                 .setCrc(Long.decode("0x" + crc))
                 .build();
     }
