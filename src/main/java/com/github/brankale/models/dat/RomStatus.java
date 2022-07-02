@@ -1,4 +1,4 @@
-package com.github.brankale.models;
+package com.github.brankale.models.dat;
 
 public enum RomStatus {
     NOT_VERIFIED,

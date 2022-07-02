@@ -1,5 +1,7 @@
 package com.github.brankale.models;
 
+import com.github.brankale.models.dat.DatEntry;
+import com.github.brankale.models.dat.Rom;
 import org.apache.commons.text.StringEscapeUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

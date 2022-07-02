@@ -1,7 +1,7 @@
 package com.github.brankale.gui;
 
 import com.github.brankale.gui.models.Parameters;
-import com.github.brankale.models.DatEntry;
+import com.github.brankale.models.dat.DatEntry;
 import com.github.brankale.models.DatFile;
 
 import javax.swing.*;
